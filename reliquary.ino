@@ -79,7 +79,7 @@ void loop() {
 
   // Light up the light according to the distance
   // It should become more bright as the ping approaches
-  analogWrite(ledPin, map(cm, minRange, maxRange, 0, 255));
+  analogWrite(ledPin, map(cm, minRange, maxRange, 255, 0));
 
   delay(100);
 }
