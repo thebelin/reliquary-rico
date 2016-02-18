@@ -2,8 +2,10 @@
    The circuit:
     * +V connection of the PING & PING2))) attached to +5V
     * GND connection of the PING & PING2))) attached to ground
-    * SIG connection of the PING))) attached to digital pin 7
-    * SIG connection of PING2))) attached to digital pin 8
+    * TRIG connection of the PING))) attached to digital pin 7
+    * TRIG connection of PING2))) attached to digital pin 8
+    * ECHO connection of the PING))) attached to digital pin 9
+    * ECHO connection of PING2))) attached to digital pin 10
     * LED+ on Pin 5, LED- to ground
 
  */
@@ -12,6 +14,10 @@
 // of the sensor's output:
 const int pingPin = 7;
 const int ping2Pin = 8;
+
+// This is the pin number for sensor input
+const int echoPin = 9;
+const int echo2Pin = 10;
 
 // This is where the LED is connected
 const int ledPin = 5;
@@ -46,8 +52,8 @@ void loop() {
   // The same pin is used to read the signal from the PING))): a HIGH
   // pulse whose duration is the time (in microseconds) from the sending
   // of the ping to the reception of its echo off of an object.
-  pinMode(pingPin, INPUT);
-  duration = pulseIn(pingPin, HIGH);
+  pinMode(echoPin, INPUT);
+  duration = pulseIn(echoPin, HIGH);
 
 
   // The PING2))) is triggered by a HIGH pulse of 2 or more microseconds.
@@ -62,8 +68,8 @@ void loop() {
   // The same pin is used to read the signal from the PING))): a HIGH
   // pulse whose duration is the time (in microseconds) from the sending
   // of the ping to the reception of its echo off of an object.
-  pinMode(ping2Pin, INPUT);
-  duration2 = pulseIn(ping2Pin, HIGH);
+  pinMode(echo2Pin, INPUT);
+  duration2 = pulseIn(echo2Pin, HIGH);
 
   // If duration2 is closer than duration, use it for duration
   if (duration2 < duration) {
